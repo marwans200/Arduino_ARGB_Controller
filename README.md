@@ -10,6 +10,7 @@ You can now use it using serial communication through the arduino IDE but instea
 
 If you are not keen on using applications from a random stranger online, there are a list of commands you can use to set values, change preset etc.
 They are:
+
 O (Case Insensitive): RGB Rainbow Spin
 N (Case Insensitive): RGB Rainbow Fade(to Different Colors)
 B (Case Insensitive): Backlight of the LCD
