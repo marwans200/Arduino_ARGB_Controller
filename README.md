@@ -12,18 +12,27 @@ If you are not keen on using applications from a random stranger online, there a
 They are:
 
 O (Case Insensitive): RGB Rainbow Spin
-N (Case Insensitive): RGB Rainbow Fade(to Different Colors)
-B (Case Insensitive): Backlight of the LCD
-s (Case Sensitive)  : Speed of the Rainbow Spin eg:- s1, s15, s12
-c (Case Sensitive)  : Sets the mode to Color Sequence mode and colors must be selected. Color selection eg:- cr,b Sets the mode to Color Sequence and sets the two colors to Red and Blue. 
-Only a few colours are set by me.
 
-R (Case Sensitive)  : Spin with one color fading to the last led, like a loading icon. Also only set colors. Use eg:- Rr (Sets to red color), Rb (Sets to blue color), Rg (Sets to green color)
-q (Case Sensitive)  : Sets the Color Sequence Speed eg:- q1, q65, q75 (q40 is the most optimum value in my opinion)
+N (Case Insensitive): RGB Rainbow Fade(to Different Colors)
+
+B (Case Insensitive): Backlight of the LCD
+
+s (Case Sensitive)  : Speed of the Rainbow Spin eg:- s1, s15, s12
+
+c (Case Sensitive)  : Sets the mode to Color Sequence mode and colors must be selected. Color selection eg:- cr,b Sets the mode to Color Sequence and sets the two colors to Red and Blue. Only a few colours are set by me.
+
+R (Case Sensitive)  : Spin with one color fading to the last led, like a loading icon. Also only set colors. Use eg:- Rr (Sets it to red color), Rb (Sets it to blue color), Rg (Sets it to green color)
+
+q (Case Sensitive)  : Sets the Color Sequence Speed eg:- q1, q65, q75
+
 r (Case Sensitive)  : Sets the Speed of the Spin Types eg:- r1, r25, r15
+
 Y (Case Sensitive)  : Sets the mode to Yin Yang Mode. takes two RGB values and makes them spin opposite to each other like the Yin Yang. eg:- Y255,0,0,0,0,255 Sets it to Red and Blue. YR1,G1,B1,R2,B2,G2
+
 N (Case Insensitive): Changes the preset values. eg:- N0 sets it to custom, N1 Sets it to RGB Spin.
+
 L (Case Sensitive)  : Sets the LCD message. Maximum 32 Characters Allowed. 16 per line as im using the 1602 LCD. eg:- LHello World! sets it to "Hello World!" without the quotes of course.
+
 ~ (Case Sensitive)  : Sets the mode to Single LED Spin and a custom RGB color, which is just one LED spinning around the strip. eg:- ~255,0,0 Sets it to Red, ~0,0,255 Sets it to Blue.
 
 Presets are:-
