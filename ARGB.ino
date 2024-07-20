@@ -204,7 +204,7 @@ void HandleSerial(){
         yingYangColors[i] = values[i];
         EEPROM.write(YIN_YANG_START_ADDR+i, values[i]);
       }
-    }else if(input.equalsIgnoreCase("N")){
+    }else if(input.startsWith("N")){
       if(input.length() > 1){
         presetval = input.substring(1).toInt();
       }
@@ -214,7 +214,7 @@ void HandleSerial(){
       if(presetval>maxpresetval) presetval=0;
       EEPROM.write(PRESET_VALUE, presetval);
       Serial.print("Preset Value Changed to: "); Serial.println(presetval);
-    }else if(input.startsWith("~")){
+    }else if(input.startsWith("H")){
       String Inp = input.substring(1);
       
       currentMode = SINGLE_LED;
@@ -236,7 +236,7 @@ void HandleSerial(){
         SingleLEDColors[i] = values[i];
       }
       SingleLED(speedR, strip.Color(values[0],values[1], values[2]));
-
+      Serial.print("Single LED Color Changed to: "); Serial.println(Inp);
       } else if(input.startsWith("L")){
       // Display the input on the LCD if it is not a command
       lcd.clear();
@@ -259,7 +259,7 @@ void HandleSerial(){
   }
 
   if(!digitalRead(7)){
-    while(!digitalRead(7)) delay(50);
+    while(!digitalRead(7)) delay(200);
     presetval++;
     if(presetval>maxpresetval) presetval=0;
     EEPROM.write(PRESET_VALUE, presetval);
@@ -333,9 +333,12 @@ void loop() {
     case 15:
       SingleLED(speedR, strip.Color(0,0,255));
       break;
-    //increase the maxpresetval variable if adding more presets
+    //increase the maxpresetval constant if adding more presets
   }
   HandleSerial();
+  //For Test Porpoises Only XD
+  //lcd.setCursor(0,1);
+  //lcd.print(presetval);
 }
 
 // Set the backlight state
@@ -354,6 +357,7 @@ void rainbowWithOffset(int wait) {
   for (j = 0; j < 256; j++) { // 5 cycles of all colors on the wheel
     for (i = 0; i < strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel((i * 256 / strip.numPixels() + j) & 255));
+      HandleSerial();
     }
     strip.show();
     delay(wait);
@@ -368,6 +372,7 @@ void rainbowNoOffset(int wait) {
   for (j = 0; j < 256; j++) {
     for (int i = 0; i < strip.numPixels(); i++) {
       strip.setPixelColor(i, Wheel((i + j) & 255));
+      HandleSerial();
     }
     strip.show();
     delay(wait);
@@ -387,6 +392,7 @@ uint32_t Wheel(byte WheelPos) {
     WheelPos -= 170;
     return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
   }
+  HandleSerial();
 }
 
 // Convert a color code to an RGB value
@@ -437,6 +443,7 @@ void displayColorSequence(String sequence, int wait) {
 void fillStripColor(uint32_t color) {
   for (int i = 0; i < strip.numPixels(); i++) {
     strip.setPixelColor(i, color);
+    HandleSerial();
   }
   strip.show();
 }
@@ -458,6 +465,7 @@ void rotateWithShadow(int wait, char color) {
       if(i<12)g=g/d;
       if(i<12)b=b/d;
       Colors[i] = strip.Color(r,g,b);
+      HandleSerial();
     }
   } else if (color == 'g') {
     int r = 0;
@@ -468,6 +476,7 @@ void rotateWithShadow(int wait, char color) {
       if(i<12)g=g/d;
       if(i<12)b=b/d;
       Colors[i] = strip.Color(r,g,b);
+      HandleSerial();
     }
   } else if (color == 'b') {
     int r = 0;
@@ -478,6 +487,7 @@ void rotateWithShadow(int wait, char color) {
       if(i<12)g=g/d;
       if(i<12)b=b/d;
       Colors[i] = strip.Color(r,g,b);
+      HandleSerial();
     }
   } else if(color == 'c'){
     int r = 223;
@@ -488,6 +498,7 @@ void rotateWithShadow(int wait, char color) {
       if(i<12)g=g/d;
       if(i<12)b=b/d;
       Colors[i] = strip.Color(r,g,b);
+      HandleSerial();
     }
   }
   else {
@@ -499,6 +510,7 @@ void rotateWithShadow(int wait, char color) {
       if(i<12)g=g/d;
       if(i<12)b=b/d;
       Colors[i] = strip.Color(r,g,b);
+      HandleSerial();
       //Serial.print(r);Serial.print(",");Serial.print(g); Serial.print(","); Serial.println(b);
     } // Invalid color code, do nothing
   }
@@ -511,8 +523,8 @@ void rotateWithShadow(int wait, char color) {
       j= k+i;
       if(k+i > 11)j=(k+i)-12;
       strip.setPixelColor(j,Colors[k+1]);
+      HandleSerial();
     }
-    HandleSerial();
     strip.show();
     delay(wait);
     HandleSerial();
@@ -539,6 +551,7 @@ void yinYang(int wait, int r, int g, int b,int r2,int g2,int b2) {
   int j = 0;
   int k = 0;
   for (int i = 0; i < strip.numPixels(); i++) {
+    HandleSerial();
     strip.clear(); // Clear all LEDs
     j=i;
     k = i + 6;
@@ -575,5 +588,6 @@ void SingleLED(int wait, uint32_t color){
     strip.setPixelColor(i,color);
     strip.show();
     delay(wait);
+    HandleSerial();
   }
 }
