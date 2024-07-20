@@ -29,11 +29,11 @@ r (Case Sensitive)  : Sets the Speed of the Spin Types eg:- r1, r25, r15
 
 Y (Case Sensitive)  : Sets the mode to Yin Yang Mode. takes two RGB values and makes them spin opposite to each other like the Yin Yang. eg:- Y255,0,0,0,0,255 Sets it to Red and Blue. YR1,G1,B1,R2,B2,G2
 
-N (Case Insensitive): Changes the preset values. eg:- N0 sets it to custom, N1 Sets it to RGB Spin.
+N (Case Sensitive)  : Changes the preset values. eg:- N0 sets it to custom, N1 Sets it to RGB Spin.
 
 L (Case Sensitive)  : Sets the LCD message. Maximum 32 Characters Allowed. 16 per line as im using the 1602 LCD. eg:- LHello World! sets it to "Hello World!" without the quotes of course.
 
-~ (Case Sensitive)  : Sets the mode to Single LED Spin and a custom RGB color, which is just one LED spinning around the strip. eg:- ~255,0,0 Sets it to Red, ~0,0,255 Sets it to Blue.
+H (Case Sensitive)  : Sets the mode to Single LED Spin and a custom RGB color, which is just one LED spinning around the strip. eg:- ~255,0,0 Sets it to Red, ~0,0,255 Sets it to Blue.
 
 Presets are:-
 
